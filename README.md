@@ -58,5 +58,22 @@ As there are several ways of taking a backup of a database, you must explain in 
 
 ### Notes
 
+Docker Container IP / Vagrant IP: 192.168.33.10
+
+https://hub.docker.com/r/mysql/mysql-server/
+
+Docker - Get MySQL: docker pull mysql/mysql-server 
+
+Setup MySQLDocker Container: docker run --name=mysql1 -d mysql/mysql-server
+Option 2: docker run -p 3306:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=iphone2017 -v /my/own/datadir:/var/lib/mysql -d mysql:latest
+
+Get generated password: docker logs mysql1 2>&1 | grep GENERATED
+Generated Password: ,em]3xEf*OxzafbED54wGAhDuD
+
+Login: docker exec -it mysql1 mysql -uroot -p
+
+Change Root password: ALTER USER 'root'@'localhost' IDENTIFIED BY 'password';
+Note: Replace 'password' with the root password you want! 
+
 SQL Dump
 -uroot -p 
