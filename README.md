@@ -49,8 +49,14 @@ Upload as part of the hand-in the database log which shows:
 
 Create a backup file of the database after the changes in the two previous exercises.
 
+
 **Handin**
 
 Include the backup file in your git-repository.
 
 As there are several ways of taking a backup of a database, you must explain in the readme file which technique you have used.
+
+### Notes
+
+SQL Dump
+-uroot -p 
