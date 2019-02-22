@@ -13,7 +13,7 @@ Slides for the assignment: https://github.com/datsoftlyngby/soft2019spring-datab
 
 Lets assume are several systems which use this database:
 
-- Inventory - which is used to maintain the two tables productsand productlines.
+- Inventory - which is used to maintain the two tables products and productlines.
 - Bookkeeping which make sure that all orders are payed.
 - Human resources which takes care of employees and their offices
 - Sales - who creates the orders for the customers
@@ -74,6 +74,9 @@ When running your VM in a Terminal/Bash-window, run the following command to get
 Run the following command to setup the Docker Container with a mysql-server:
 `docker run --name my_mysql -v $(pwd)/mysql_databasefiles:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=iphone2019 -d mysql`
 
+To connect to the Docker Container through the terminal/Bash, use the following command:
+`docker exec -it my_mysql mysql -u root -p`
+
 Connect to the Docker Container through WorkBench with the following information:
 
 *IP*: `192.168.33.10`
@@ -112,6 +115,8 @@ Setup MySQLDocker Container:
 - docker run -p 3306:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=iphone2017 -v /my/own/datadir:/var/lib/mysql -d mysql:latest
 - docker run --name my_mysql -v $(pwd)/mysql_databasefiles:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=iphone2019 -d mysql
 echo "Wooootttt"
+
+Connect to Container: docker exec -it my_mysql mysql -u root -p
 
 Get generated password: docker logs mysql1 2>&1 | grep GENERATED
 Generated Password: ,em]3xEf*OxzafbED54wGAhDuD
