@@ -56,6 +56,25 @@ Include the backup file in your git-repository.
 
 As there are several ways of taking a backup of a database, you must explain in the readme file which technique you have used.
 
+### Setup Guide
+
+Setup VM, Vagrant and Docker
+
+*Please note the IP address you've selected for your Vagrant-setup, because you will need this later! Default its 192.168.33.10*
+
+Download and install the latest version of [Mysql WorkBench](https://dev.mysql.com/downloads/workbench/), which we will be using later to inspect the Database.
+
+***Note***: If you are using a older version of Workbench, you might not be able to connect to the server!
+I've tried to apply the following [guides](https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-authentication-protocol-requested-by-server) for older Workbench-versions and Sequel Pro, but to no avail. 
+
+
+When running your VM in a Terminal/Bash-window, run the following command to get the latest version of mySQL for your Docker:
+`docker pull mysql:latest`
+
+Run the following command to setup the Docker Container with a mysql-server:
+`docker run --name my_mysql -v $(pwd)/mysql_databasefiles:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=iphone2019 -d mysql`
+
+
 ### Notes
 
 Docker Container IP / Vagrant IP: 192.168.33.10
@@ -64,8 +83,15 @@ https://hub.docker.com/r/mysql/mysql-server/
 
 Docker - Get MySQL: docker pull mysql/mysql-server 
 
-Setup MySQLDocker Container: docker run --name=mysql1 -d mysql/mysql-server
-Option 2: docker run -p 3306:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=iphone2017 -v /my/own/datadir:/var/lib/mysql -d mysql:latest
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'iphone2019';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'iphone2019';
+flush privileges;
+
+Setup MySQLDocker Container: 
+- docker run --name=mysql1 -d mysql/mysql-server
+- docker run -p 3306:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=iphone2017 -v /my/own/datadir:/var/lib/mysql -d mysql:latest
+- docker run --name my_mysql -v $(pwd)/mysql_databasefiles:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=iphone2019 -d mysql
+echo "Wooootttt"
 
 Get generated password: docker logs mysql1 2>&1 | grep GENERATED
 Generated Password: ,em]3xEf*OxzafbED54wGAhDuD
@@ -73,7 +99,15 @@ Generated Password: ,em]3xEf*OxzafbED54wGAhDuD
 Login: docker exec -it mysql1 mysql -uroot -p
 
 Change Root password: ALTER USER 'root'@'localhost' IDENTIFIED BY 'password';
-Note: Replace 'password' with the root password you want! 
+Note: Replace 'password' with the root password you want!
+Flush: flush priviliges;
+
+
 
 SQL Dump
 -uroot -p 
+
+show databases;
+https://gist.github.com/hofmannsven/9164408
+
+Links: https://expressjs.com/en/guide/database-integration.html#mysql 
