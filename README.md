@@ -74,6 +74,26 @@ When running your VM in a Terminal/Bash-window, run the following command to get
 Run the following command to setup the Docker Container with a mysql-server:
 `docker run --name my_mysql -v $(pwd)/mysql_databasefiles:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=iphone2019 -d mysql`
 
+Connect to the Docker Container through WorkBench with the following information:
+
+*IP*: `192.168.33.10`
+
+*Port*: `3306`
+
+*User*: `root`
+
+*Password*: `iphone2019`
+
+After having connected to the Docker Container, go to the [sampledb.txt](https://github.com/radeonxray/DB-Assignment4/blob/master/sampledb.txt)-file, copy the entire content.
+
+**Note**: This .txt-file contains the same content, as the mysqlsampledatabase.sql-file found [here](http://www.mysqltutorial.org/mysql-sample-database.aspx)
+
+Copy the entire content into a new query in the Database and run it. 
+
+Refresh the Schemas and you should see a new schema called `classicmodels`
+
+The Database is now ready for the assignments!
+
 
 ### Notes
 
