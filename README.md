@@ -11,21 +11,41 @@ Slides for the assignment: https://github.com/datsoftlyngby/soft2019spring-datab
 
 ### Assignment 1
 
-Lets assume are several systems which use this database:
-
 - Inventory - which is used to maintain the two tables products and productlines.
+  - Needs access to add and remove inventory from the tables products and productlines.
 - Bookkeeping which make sure that all orders are payed.
+  - Needs access to the orders-, orderdetails- and payments-table. Reasoning is that the bookkeepers needs to check that the orders and orderdetails match, as well as the payments-table, to make sure that the orders has been paied for.
 - Human resources which takes care of employees and their offices
+  - Needs access to employees- and offices-table. HR are not concerned about the product or orders, they only focus on the "human"-aspect of the databse.
 - Sales - who creates the orders for the customers
+  - Needs access to the Orders-, OrderDetails-, Products- and Productlines-tables, so they can actually sell the products, as well as create orders and change the status of the inventory (Shouldn't be able to sell more than you have!)
+
 - IT - who maintains this database
-- Create a database user for each of the four roles, and be restrictive in what the each user can do in the database.
+  - Root access, since the user needs to be able to create new schemas, change existing ones and perhaps even delete existing ones. Gratned, the only catch here it, that the user might not ahve anything to do with actual content, but only the framework containing the content.
+  
+Create a database user for each of the four roles, and be restrictive in what the each user can do in the database.
 
 In the readme file, argue why the permissions are as they are.
+
+`SQL Scripts:`
+
+Create Users
+```mysql
+CREATE USER 'userInventory'@'localhost' IDENTIFIED BY 'passInven';
+CREATE USER 'userBookkeeping'@'localhost' IDENTIFIED BY 'passBkp';
+CREATE USER 'userHR'@'localhost' IDENTIFIED BY 'passHR';
+CREATE USER 'userSale'@'localhost' IDENTIFIED BY 'passSale';
+```
+
+Set Permission/Access
+
+```mysql
+
+```
 
 **Hand-in**
 
 Hand in for this is a sql script which creates and sets the permissions for the users.
-
 
 ### Assignment 2
 
@@ -127,7 +147,7 @@ Change Root password: ALTER USER 'root'@'localhost' IDENTIFIED BY 'password';
 Note: Replace 'password' with the root password you want!
 Flush: flush priviliges;
 
-
+Show grants: `SHOW GRANTS FOR '[Username]'@'localhost';`
 
 SQL Dump
 -uroot -p 
@@ -136,3 +156,9 @@ show databases;
 https://gist.github.com/hofmannsven/9164408
 
 Links: https://expressjs.com/en/guide/database-integration.html#mysql 
+
+User and Permissions: https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql
+
+Default priviligies:
+GRANT usage ON star.star TO [Username]@localhost
+http://www.mysqlab.net/knowledge/kb/detail/topic/security/id/5917
