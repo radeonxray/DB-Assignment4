@@ -13,12 +13,16 @@ Slides for the assignment: https://github.com/datsoftlyngby/soft2019spring-datab
 
 - Inventory - which is used to maintain the two tables products and productlines.
   - Needs access to add and remove inventory from the tables products and productlines.
+  - Arguments could be made for giving them ALL PRIVILIGIES to the tables, but not the ability to DROP.
 - Bookkeeping which make sure that all orders are payed.
   - Needs access to the orders-, orderdetails- and payments-table. Reasoning is that the bookkeepers needs to check that the orders and orderdetails match, as well as the payments-table, to make sure that the orders has been paied for.
+  - The bookkeepers perhaps should only be equiped with SELECT, since they have to control/check actual orders, maybe potentially DELETE and UPDATE.
 - Human resources which takes care of employees and their offices
   - Needs access to employees- and offices-table. HR are not concerned about the product or orders, they only focus on the "human"-aspect of the databse.
+  - It could be argued, that HR only needs to INSERT, DELETE, SELECT and UPDATE
 - Sales - who creates the orders for the customers
   - Needs access to the Orders-, OrderDetails-, Products- and Productlines-tables, so they can actually sell the products, as well as create orders and change the status of the inventory (Shouldn't be able to sell more than you have!)
+  - One could argue, that the sales team only should be able to SELECT, UPDATE, DELETE and INSERT, thus only making them able to create a sale, and not any other features.
 
 - IT - who maintains this database
   - Root access, since the user needs to be able to create new schemas, change existing ones and perhaps even delete existing ones. Gratned, the only catch here it, that the user might not ahve anything to do with actual content, but only the framework containing the content.
@@ -37,10 +41,26 @@ CREATE USER 'userHR'@'localhost' IDENTIFIED BY 'passHR';
 CREATE USER 'userSale'@'localhost' IDENTIFIED BY 'passSale';
 ```
 
-Set Permission/Access
+Set Very basic (ALL) Permission/Access
 
 ```mysql
+GRANT ALL ON classicmodels.products TO 'userInventory'@'localhost';
+GRANT ALL ON classicmodels.productlines TO 'userInventory'@'localhost';
 
+GRANT ALL ON classicmodels.orderdetails TO 'userBookkeeping'@'localhost';
+GRANT ALL ON classicmodels.payments TO 'userBookkeeping'@'localhost';
+GRANT ALL ON classicmodels.orders TO 'userBookkeeping'@'localhost';
+
+GRANT ALL ON classicmodels.employees TO 'userHR'@'localhost';
+GRANT ALL ON classicmodels.customers TO 'userHR'@'localhost';
+GRANT ALL ON classicmodels.offices TO 'userHR'@'localhost';
+
+GRANT ALL ON classicmodels.orderdetails TO 'userSale'@'localhost';
+GRANT ALL ON classicmodels.orders TO 'userHR'@'localhost';
+GRANT ALL ON classicmodels.productlines TO 'userHR'@'localhost';
+GRANT ALL ON classicmodels.products TO 'userHR'@'localhost';
+
+flush Privileges;
 ```
 
 **Hand-in**
@@ -162,3 +182,9 @@ User and Permissions: https://www.digitalocean.com/community/tutorials/how-to-cr
 Default priviligies:
 GRANT usage ON star.star TO [Username]@localhost
 http://www.mysqlab.net/knowledge/kb/detail/topic/security/id/5917
+
+Revoke Permits/Priviliges
+`REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'userInventory'@localhost`
+
+Set restriction on User:
+https://dev.mysql.com/doc/refman/8.0/en/user-resources.html
