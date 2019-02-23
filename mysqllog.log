@@ -1,0 +1,101 @@
+/usr/sbin/mysqld, Version: 8.0.15 (MySQL Community Server - GPL). started with:
+Tcp port: 3306  Unix socket: /var/run/mysqld/mysqld.sock
+Time                 Id Command    Argument
+2019-02-23T02:11:05.674173Z	   64 Quit	
+2019-02-23T02:11:57.489869Z	   65 Connect	userHR@localhost on  using Socket
+2019-02-23T02:11:57.491809Z	   65 Query	select @@version_comment limit 1
+2019-02-23T02:12:02.454245Z	   65 Query	INSERT INTO `classicmodels`.`products` (`productCode`, `productName`, `productLine`, `productScale`, `productVendor`, `productDescription`, `quantityInStock`, `buyPrice`, `MSRP`) VALUES ('S72_3214', 'R.M.S. TITANIC 2', 'Ships', '1:25', 'Blue Star Line', 'A official 1:25 replica of the upcoming recreation of the famous RMS Titanic ', '500', '185.98', '299.99')
+2019-02-23T02:12:04.623568Z	   65 Quit	
+2019-02-23T02:12:41.138900Z	   66 Connect	root@localhost on  using Socket
+2019-02-23T02:12:41.140748Z	   66 Query	select @@version_comment limit 1
+2019-02-23T02:12:44.103802Z	   66 Query	SET GLOBAL general_log = 'ON'
+2019-02-23T02:12:47.776334Z	   66 Quit	
+2019-02-23T02:18:57.706457Z	   67 Connect	userHR@localhost on  using Socket
+2019-02-23T02:18:57.708208Z	   67 Query	select @@version_comment limit 1
+2019-02-23T02:19:00.535757Z	   67 Query	INSERT INTO `classicmodels`.`products` (`productCode`, `productName`, `productLine`, `productScale`, `productVendor`, `productDescription`, `quantityInStock`, `buyPrice`, `MSRP`) VALUES ('S72_3214', 'R.M.S. TITANIC 2', 'Ships', '1:25', 'Blue Star Line', 'A official 1:25 replica of the upcoming recreation of the famous RMS Titanic ', '500', '185.98', '299.99')
+2019-02-23T02:19:02.297243Z	   67 Query	INSERT INTO `classicmodels`.`products` (`productCode`, `productName`, `productLine`, `productScale`, `productVendor`, `productDescription`, `quantityInStock`, `buyPrice`, `MSRP`) VALUES ('S72_3214', 'R.M.S. TITANIC 2', 'Ships', '1:25', 'Blue Star Line', 'A official 1:25 replica of the upcoming recreation of the famous RMS Titanic ', '500', '185.98', '299.99')
+2019-02-23T02:19:03.649416Z	   67 Query	INSERT INTO `classicmodels`.`products` (`productCode`, `productName`, `productLine`, `productScale`, `productVendor`, `productDescription`, `quantityInStock`, `buyPrice`, `MSRP`) VALUES ('S72_3214', 'R.M.S. TITANIC 2', 'Ships', '1:25', 'Blue Star Line', 'A official 1:25 replica of the upcoming recreation of the famous RMS Titanic ', '500', '185.98', '299.99')
+2019-02-23T02:19:04.970083Z	   67 Quit	
+2019-02-23T02:24:06.670431Z	   37 Query	DROP USER userInventory
+2019-02-23T02:24:15.658244Z	   37 Query	DROP USER userInventory@localhost
+2019-02-23T02:24:27.496128Z	   37 Query	DROP USER userBookkeeping@localhost
+2019-02-23T02:24:31.032913Z	   37 Query	DROP USER userHR@localhost
+2019-02-23T02:24:34.698484Z	   37 Query	DROP USER userSale@localhost
+2019-02-23T02:25:04.218515Z	   37 Query	Show GRANTS FOR userSale@localhost
+2019-02-23T02:26:35.304118Z	   68 Connect	userHR@localhost on  using Socket
+2019-02-23T02:26:35.304834Z	   68 Connect	Access denied for user 'userHR'@'localhost' (using password: YES)
+2019-02-23T02:26:43.956060Z	   69 Connect	root@localhost on  using Socket
+2019-02-23T02:26:43.957742Z	   69 Query	select @@version_comment limit 1
+2019-02-23T02:26:46.343206Z	   69 Query	SELECT @@GLOBAL.log_error_services
+2019-02-23T02:26:51.273549Z	   69 Quit	
+2019-02-23T02:28:59.411990Z	   70 Connect	root@localhost on  using Socket
+2019-02-23T02:28:59.413603Z	   70 Query	select @@version_comment limit 1
+2019-02-23T02:29:30.332424Z	   70 Quit	
+2019-02-23T02:31:06.247592Z	   71 Connect	root@localhost on  using Socket
+2019-02-23T02:31:06.250397Z	   71 Query	select @@version_comment limit 1
+2019-02-23T02:31:09.469732Z	   71 Query	Explain mysql.general_log
+2019-02-23T02:32:28.582042Z	   71 Query	show tables in mysql
+2019-02-23T02:32:47.015218Z	   71 Query	show schemas
+2019-02-23T02:32:54.891380Z	   71 Quit	
+2019-02-23T02:34:07.854020Z	   37 Query	CREATE USER 'userInventory'@'localhost' IDENTIFIED BY <secret>
+2019-02-23T02:34:38.237000Z	   37 Query	CREATE USER 'userBookkeeping'@'localhost' IDENTIFIED BY <secret>
+2019-02-23T02:34:49.481418Z	   37 Query	CREATE USER 'userHR'@'localhost' IDENTIFIED BY <secret>
+2019-02-23T02:34:55.461701Z	   37 Query	CREATE USER 'userSale'@'localhost' IDENTIFIED BY <secret>
+2019-02-23T02:35:31.858868Z	   37 Query	GRANT SELECT, INSERT, UPDATE, DELETE ON classicmodels.products TO userInventory@localhost
+2019-02-23T02:35:31.865807Z	   37 Query	SHOW WARNINGS
+2019-02-23T02:35:47.313246Z	   37 Query	GRANT SELECT, INSERT, UPDATE, DELETE ON classicmodels.productlines TO userInventory@localhost
+2019-02-23T02:35:47.319845Z	   37 Query	SHOW WARNINGS
+2019-02-23T02:35:55.573966Z	   37 Query	flush Privileges
+2019-02-23T02:36:13.142585Z	   37 Query	GRANT SELECT, UPDATE  ON classicmodels.orderdetails TO userBookkeeping@localhost
+2019-02-23T02:36:13.150224Z	   37 Query	SHOW WARNINGS
+2019-02-23T02:36:19.498159Z	   37 Query	GRANT SELECT, UPDATE  ON classicmodels.orders TO userBookkeeping@localhost
+2019-02-23T02:36:19.504566Z	   37 Query	SHOW WARNINGS
+2019-02-23T02:36:28.486924Z	   37 Query	GRANT SELECT, UPDATE  ON classicmodels.payments TO userBookkeeping@localhost
+2019-02-23T02:36:28.492864Z	   37 Query	SHOW WARNINGS
+2019-02-23T02:36:35.113521Z	   37 Query	GRANT SELECT  ON classicmodels.customers TO userBookkeeping@localhost
+2019-02-23T02:36:35.120335Z	   37 Query	SHOW WARNINGS
+2019-02-23T02:36:43.036282Z	   37 Query	flush Privileges
+2019-02-23T02:36:50.906689Z	   37 Query	GRANT SELECT, UPDATE, INSERT, DELETE ON classicmodels.employees TO userHR@localhost
+2019-02-23T02:36:50.912111Z	   37 Query	SHOW WARNINGS
+2019-02-23T02:36:59.495818Z	   37 Query	GRANT SELECT, UPDATE, INSERT, DELETE ON classicmodels.offices TO userHR@localhost
+2019-02-23T02:36:59.502485Z	   37 Query	SHOW WARNINGS
+2019-02-23T02:37:08.466475Z	   37 Query	flush Privileges
+2019-02-23T02:37:16.790527Z	   37 Query	GRANT SELECT, INSERT, UPDATE, DELETE ON classicmodels.customers TO userSale@localhost
+2019-02-23T02:37:16.797946Z	   37 Query	SHOW WARNINGS
+2019-02-23T02:37:24.547601Z	   37 Query	GRANT SELECT, INSERT, UPDATE, DELETE ON classicmodels.orderdetails TO userSale@localhost
+2019-02-23T02:37:24.554464Z	   37 Query	SHOW WARNINGS
+2019-02-23T02:37:30.645503Z	   37 Query	GRANT SELECT, INSERT, UPDATE, DELETE ON classicmodels.orders TO userSale@localhost
+2019-02-23T02:37:30.652548Z	   37 Query	SHOW WARNINGS
+2019-02-23T02:37:37.992140Z	   37 Query	GRANT SELECT, UPDATE ON classicmodels.products TO userSale@localhost
+2019-02-23T02:37:37.997672Z	   37 Query	SHOW WARNINGS
+2019-02-23T02:37:46.837294Z	   37 Query	flush Privileges
+2019-02-23T02:39:46.343931Z	   37 Query	INSERT INTO `classicmodels`.`employees` (`employeeNumber`, `lastName`, `firstName`, `extension`, `email`, `officeCode`, `reportsTo`, `jobTitle`) VALUES ('1760', 'Martial', 'Anthony', 'x0606', 'anthonymartial@classicmodelcars.com', '4', '1102', 'Sales Rep')
+2019-02-23T02:40:55.476129Z	   37 Query	INSERT INTO `classicmodels`.`employees` (`employeeNumber`, `lastName`, `firstName`, `extension`, `email`, `officeCode`, `reportsTo`, `jobTitle`) VALUES ('1760', 'Rashford', 'Marcus', 'x1010', 'marcusrashford@classicmodelcars.com', '4', '1102', 'Sales Rep')
+2019-02-23T02:41:05.007708Z	   37 Query	INSERT INTO `classicmodels`.`employees` (`employeeNumber`, `lastName`, `firstName`, `extension`, `email`, `officeCode`, `reportsTo`, `jobTitle`) VALUES ('1761', 'Rashford', 'Marcus', 'x1010', 'marcusrashford@classicmodelcars.com', '4', '1102', 'Sales Rep')
+2019-02-23T02:42:16.219146Z	   37 Query	SELECT * FROM classicmodels.products
+LIMIT 0, 2000
+2019-02-23T02:42:16.226399Z	   36 Query	SELECT st.* FROM performance_schema.events_statements_current st JOIN performance_schema.threads thr ON thr.thread_id = st.thread_id WHERE thr.processlist_id = 37
+2019-02-23T02:42:16.227802Z	   36 Query	SELECT st.* FROM performance_schema.events_stages_history_long st WHERE st.nesting_event_id = 758
+2019-02-23T02:42:16.228917Z	   36 Query	SELECT st.* FROM performance_schema.events_waits_history_long st WHERE st.nesting_event_id = 758
+2019-02-23T02:42:16.232159Z	   36 Query	SHOW INDEX FROM `classicmodels`.`products`
+2019-02-23T02:42:22.339582Z	   37 Query	SELECT * FROM classicmodels.products
+LIMIT 0, 2000
+2019-02-23T02:42:22.346978Z	   36 Query	SELECT st.* FROM performance_schema.events_statements_current st JOIN performance_schema.threads thr ON thr.thread_id = st.thread_id WHERE thr.processlist_id = 37
+2019-02-23T02:42:22.348357Z	   36 Query	SELECT st.* FROM performance_schema.events_stages_history_long st WHERE st.nesting_event_id = 761
+2019-02-23T02:42:22.350200Z	   36 Query	SELECT st.* FROM performance_schema.events_waits_history_long st WHERE st.nesting_event_id = 761
+2019-02-23T02:42:22.352575Z	   36 Query	SHOW INDEX FROM `classicmodels`.`products`
+2019-02-23T02:44:31.101543Z	   37 Query	INSERT INTO `classicmodels`.`products` (`productCode`, `productName`, `productLine`, `productScale`, `productVendor`, `productDescription`, `quantityInStock`, `buyPrice`, `MSRP`) VALUES ('S72_3215', 'Aston Martin DB5', 'Classic Cars', '1:25', 'EON', 'An official 1:25 model of the car that James Bond drives in classics such as Goldfinger and Skyfall!', '10000', '25.76', '79.99')
+2019-02-23T02:45:20.835766Z	   37 Query	INSERT INTO `classicmodels`.`orders` (`orderNumber`, `orderDate`, `requiredDate`, `status`, `customerNumber`) VALUES ('10427', '2019-02-23', '2019-01-03', 'In Process', '120')
+2019-02-23T02:45:51.167318Z	   37 Query	INSERT INTO `classicmodels`.`orders` (`orderNumber`, `orderDate`, `requiredDate`, `status`, `customerNumber`) VALUES ('10427', '2019-02-23', '2019-01-03', 'In Process', '120')
+2019-02-23T02:46:05.667315Z	   37 Query	SELECT * FROM classicmodels.orders
+LIMIT 0, 2000
+2019-02-23T02:46:05.675917Z	   36 Query	SELECT st.* FROM performance_schema.events_statements_current st JOIN performance_schema.threads thr ON thr.thread_id = st.thread_id WHERE thr.processlist_id = 37
+2019-02-23T02:46:05.679377Z	   36 Query	SELECT st.* FROM performance_schema.events_stages_history_long st WHERE st.nesting_event_id = 773
+2019-02-23T02:46:05.682029Z	   36 Query	SELECT st.* FROM performance_schema.events_waits_history_long st WHERE st.nesting_event_id = 773
+2019-02-23T02:46:05.683922Z	   36 Query	SHOW INDEX FROM `classicmodels`.`orders`
+2019-02-23T02:46:28.663626Z	   37 Query	INSERT INTO `classicmodels`.`orders` (`orderNumber`, `orderDate`, `requiredDate`, `status`, `customerNumber`) VALUES ('10427', '2019-02-23', '2019-01-03', 'In Process', '119')
+2019-02-23T02:47:01.277135Z	   37 Query	INSERT INTO `classicmodels`.`products` (`productCode`, `productName`, `productLine`, `productScale`, `productVendor`, `productDescription`, `quantityInStock`, `buyPrice`, `MSRP`) VALUES ('S72_3214', 'R.M.S. TITANIC 2', 'Ships', '1:25', 'Blue Star Line', 'A official 1:25 replica of the upcoming recreation of the famous RMS Titanic ', '500', '185.98', '299.99')
+2019-02-23T03:00:19.136241Z	   72 Connect	userHR@localhost on  using Socket
+2019-02-23T03:00:19.137891Z	   72 Query	select @@version_comment limit 1
+2019-02-23T03:00:24.163383Z	   72 Query	INSERT INTO `classicmodels`.`products` (`productCode`, `productName`, `productLine`, `productScale`, `productVendor`, `productDescription`, `quantityInStock`, `buyPrice`, `MSRP`) VALUES ('S72_3214', 'R.M.S. TITANIC 2', 'Ships', '1:25', 'Blue Star Line', 'A official 1:25 replica of the upcoming recreation of the famous RMS Titanic ', '500', '185.98', '299.99')
+2019-02-23T03:00:34.029086Z	   72 Quit	
