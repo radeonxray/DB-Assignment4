@@ -156,6 +156,15 @@ Upload as part of the hand-in the database log which shows:
 - The users and their privileges being added (the part of the log from exercise 1)
 - The three changes to the database from above
 - One attempt to make a change by a user with the wrong privileges
+  - Logged in as userHR (Human Resources)
+  - Login-command: docker exec -it my_mysql mysql -u userHR -p 
+  - Password: passHR
+  - Tried to add a new product in the product-table, with the following
+  ```mysql
+  INSERT INTO `classicmodels`.`products` (`productCode`, `productName`, `productLine`, `productScale`, `productVendor`, `productDescription`, `quantityInStock`, `buyPrice`, `MSRP`) VALUES ('S72_3214', 'R.M.S. TITANIC 2', 'Ships', '1:25', 'Blue Star Line', 'A official 1:25 replica of the upcoming recreation of the famous RMS Titanic ', '500', '185.98', '299.99');
+  ```
+  
+  Which failed!
 
 ### Assignment 3
 
@@ -267,3 +276,6 @@ https://dev.mysql.com/doc/refman/8.0/en/user-resources.html
 
 MySQL Logs
 https://dev.mysql.com/doc/refman/5.7/en/query-log.html
+
+Drop User:
+https://dev.mysql.com/doc/refman/5.6/en/drop-user.html
