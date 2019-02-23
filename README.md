@@ -186,6 +186,19 @@ Include the backup file in your git-repository.
 
 As there are several ways of taking a backup of a database, you must explain in the readme file which technique you have used.
 
+I used the folllwing command in a Terminal, while being logged in on Vagrant:
+
+`docker exec my_mysql /usr/bin/mysqldump -u root --password=iphone2019 --all-databases > backupAll.sql`
+
+This produced a .sql-file named "backupAll.sql", which was created using mysqldump and which was set to dump all databases into the file. 
+
+I then opened a new seperat Terminal-window and used the following command:
+`vagrant ssh -c "sudo cat /home/vagrant/backupAll.sql" > mysqlbackupall.sql`
+
+This command logged in to my vagrant, found the backupAll.sql-file and then created a copy named mysqlbackupAll.sql in my root-directory (/Users/[username]).
+
+
+
 ---------
 
 ### Setup Guide
@@ -294,3 +307,12 @@ https://dev.mysql.com/doc/refman/5.6/en/drop-user.html
 
 Command to copy .log-file from Vagrant to Host-machine:
 `vagrant ssh -c "sudo cat /home/vagrant/mysql_databasefiles/58f11bcc4f48.log" > mysqllog.log`
+
+MySQL Dump
+https://dev.mysql.com/doc/refman/5.7/en/mysqldump-sql-format.html
+`mysqldump --all-databases > dump.sql`
+https://gist.github.com/spalladino/6d981f7b33f6e0afe6bb
+`docker exec my_mysql /usr/bin/mysqldump -u root --password=iphone2019 classicmodels > backup.sql`
+`docker exec my_mysql /usr/bin/mysqldump -u root --password=iphone2019 --all-databases > backupAll.sql`
+`docker exec my_mysql /usr/bin/mysqldump -u root --password=root DATABASE > backup.sql`
+
