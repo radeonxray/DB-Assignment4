@@ -10,6 +10,11 @@ Slides for the assignment: https://github.com/datsoftlyngby/soft2019spring-datab
 ------
 ## Assignment
 
+**Please note:** I didn't write the assignment and my answers in a Google Doc, which I usesually do during assignments, and instead opted to write directly in the README.md-file, so there might be some spelling mistakes and snaffus here and there.
+I'm sorry for the inconvenience.
+
+------
+
 ### Assignment 1
 
 - Inventory - which is used to maintain the two tables products and productlines.
@@ -186,16 +191,21 @@ Include the backup file in your git-repository.
 
 As there are several ways of taking a backup of a database, you must explain in the readme file which technique you have used.
 
+#### Answer
 I used the folllwing command in a Terminal, while being logged in on Vagrant:
 
 `docker exec my_mysql /usr/bin/mysqldump -u root --password=iphone2019 --all-databases > backupAll.sql`
 
 This produced a .sql-file named "backupAll.sql", which was created using mysqldump and which was set to dump all databases into the file. 
 
-I then opened a new seperat Terminal-window and used the following command:
+I then opened a new separat Terminal-window and used the following command:
 `vagrant ssh -c "sudo cat /home/vagrant/backupAll.sql" > mysqlbackupall.sql`
 
 This command logged in to my vagrant, found the backupAll.sql-file and then created a copy named mysqlbackupAll.sql in my root-directory (/Users/[username]).
+
+[The entire backup-file can be found and seen here](https://github.com/radeonxray/DB-Assignment4/blob/master/mysqlbackupall.sql)
+
+What I've done, is taking a backup of all the databases while the MYSQL server was running (*Online Versus Offline Backups*), from a (technically) remote virtual machine on my laptop and transfered the results to my local machine (*Local Versus Remote Backups*). The backup contains all the information regarding the DB, including changes (*Full Versus Incremental Backups*)
 
 
 
@@ -203,9 +213,10 @@ This command logged in to my vagrant, found the backupAll.sql-file and then crea
 
 ### Setup Guide
 
-Setup VM, Vagrant and Docker
+Setup VM, Vagrant and Docker, [you can read my original guide on how to setup VM, Vagrant and Docker from Assignment 2 here](https://github.com/radeonxray/DB-Assignment2)
 
 *Please note the IP address you've selected for your Vagrant-setup, because you will need this later! Default its 192.168.33.10*
+
 
 Download and install the latest version of [Mysql WorkBench](https://dev.mysql.com/downloads/workbench/), which we will be using later to inspect the Database.
 
