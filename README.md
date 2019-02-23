@@ -264,3 +264,6 @@ Revoke Permits/Priviliges
 
 Set restriction on User:
 https://dev.mysql.com/doc/refman/8.0/en/user-resources.html
+
+MySQL Logs
+https://dev.mysql.com/doc/refman/5.7/en/query-log.html
