@@ -20,7 +20,8 @@ Slides for the assignment: https://github.com/datsoftlyngby/soft2019spring-datab
   - An argument could be made for allowing UPDATE, as the Bookkeepers perhaps should be able to correct mistakes, but in order to limit potential "creative booking", they should not be allowed to DELETE from any of the tables.
 - Human resources which takes care of employees and their offices
   - Needs access to employees- and offices-table. HR are not concerned about the product or orders, they only focus on the "human"-aspect of the databse.
-  - It could be argued, that HR only needs to INSERT, DELETE, SELECT, CREATE (to create new users) and UPDATE.
+  - It could be argued, that HR only needs to INSERT, DELETE, SELECT, CREATE and UPDATE.
+  - Does NOT CREATE new Users! That's IT job!
 - Sales - who creates the orders for the customers
   - Needs access to the Orders-, OrderDetails-, Products- and Productlines-tables, so they can actually sell the products, as well as create orders and change the status of the inventory (Shouldn't be able to sell more than you have!)
   - One could argue, that the sales team only should be able to SELECT, UPDATE, DELETE and INSERT(orders & orderdetails, NOT Products or productlines!), thus only making them able to create a sale, and not any other features.
