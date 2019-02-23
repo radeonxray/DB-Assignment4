@@ -12,20 +12,21 @@ Slides for the assignment: https://github.com/datsoftlyngby/soft2019spring-datab
 ### Assignment 1
 
 - Inventory - which is used to maintain the two tables products and productlines.
-  - Needs access to add and remove inventory from the tables products and productlines.
-  - Arguments could be made for giving them ALL PRIVILIGIES to the tables, but not the ability to DROP.
+  - Needs access to add, update and remove inventory from the tables products and productlines.
+  - Arguments could be made for giving them priviligies such as SELECT, INSERT, UPDATE, DELETE to the tables, but not the ability to DROP or CREATE (If they only really have to manage the inventory of the 2 given tables, products and productline).
 - Bookkeeping which make sure that all orders are payed.
   - Needs access to the orders-, orderdetails- and payments-table. Reasoning is that the bookkeepers needs to check that the orders and orderdetails match, as well as the payments-table, to make sure that the orders has been paied for.
   - The bookkeepers perhaps should only be equiped with SELECT, since they have to control/check actual orders, maybe potentially DELETE and UPDATE.
+  - An argument could be made for allowing UPDATE, as the Bookkeepers perhaps should be able to correct mistakes, but in order to limit potential "creative booking", they should not be allowed to DELETE from any of the tables.
 - Human resources which takes care of employees and their offices
   - Needs access to employees- and offices-table. HR are not concerned about the product or orders, they only focus on the "human"-aspect of the databse.
-  - It could be argued, that HR only needs to INSERT, DELETE, SELECT and UPDATE
+  - It could be argued, that HR only needs to INSERT, DELETE, SELECT, CREATE (to create new users) and UPDATE.
 - Sales - who creates the orders for the customers
   - Needs access to the Orders-, OrderDetails-, Products- and Productlines-tables, so they can actually sell the products, as well as create orders and change the status of the inventory (Shouldn't be able to sell more than you have!)
-  - One could argue, that the sales team only should be able to SELECT, UPDATE, DELETE and INSERT, thus only making them able to create a sale, and not any other features.
+  - One could argue, that the sales team only should be able to SELECT, UPDATE, DELETE and INSERT(orders & orderdetails, NOT Products or productlines!), thus only making them able to create a sale, and not any other features.
 
 - IT - who maintains this database
-  - Root access, since the user needs to be able to create new schemas, change existing ones and perhaps even delete existing ones. Gratned, the only catch here it, that the user might not ahve anything to do with actual content, but only the framework containing the content.
+  - Root access, since the user needs to be able to create new schemas, change existing ones and perhaps even delete existing ones. Gratned, the only catch here it, that the user might not have anything to do with actual content, but only the framework containing the content.
   
 Create a database user for each of the four roles, and be restrictive in what the each user can do in the database.
 
@@ -41,7 +42,7 @@ CREATE USER 'userHR'@'localhost' IDENTIFIED BY 'passHR';
 CREATE USER 'userSale'@'localhost' IDENTIFIED BY 'passSale';
 ```
 
-Set Very basic (ALL) Permission/Access
+**DO NOT USE** Set Very basic (ALL)  PRIVILEGES **DO NOT USE** 
 
 ```mysql
 GRANT ALL ON classicmodels.products TO 'userInventory'@'localhost';
@@ -61,6 +62,17 @@ GRANT ALL ON classicmodels.productlines TO 'userHR'@'localhost';
 GRANT ALL ON classicmodels.products TO 'userHR'@'localhost';
 
 flush Privileges;
+```
+
+**DO NOT USE** Revoke ALL PRIVILEGES **DO NOT USE** 
+```mysql
+
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'userInventory'@localhost;
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'userSale'@localhost;
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'userBookkeeping'@localhost;
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'userHR'@localhost;
+flush Privileges;
+
 ```
 
 **Hand-in**
@@ -177,7 +189,11 @@ https://gist.github.com/hofmannsven/9164408
 
 Links: https://expressjs.com/en/guide/database-integration.html#mysql 
 
-User and Permissions: https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql
+User and Permissions: 
+
+https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql
+
+https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html
 
 Default priviligies:
 GRANT usage ON star.star TO [Username]@localhost
