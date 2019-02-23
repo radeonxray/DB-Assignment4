@@ -132,19 +132,21 @@ Make a number of operations on the database:
 
 - Insert 2 new employees
 ```mysql
-INSERT INTO `classicmodels`.`employees` (`employeeNumber`, `lastName`, `firstName`, `extension`, `email`, `officeCode`, `reportsTo`, `jobTitle`) VALUES ('1750', 'Jobs', 'Steve', 'x0202', 'stevejobs@classicmodelcars.com', '4', '1102', 'Sales Rep');
+INSERT INTO `classicmodels`.`employees` (`employeeNumber`, `lastName`, `firstName`, `extension`, `email`, `officeCode`, `reportsTo`, `jobTitle`) VALUES ('1760', 'Martial', 'Anthony', 'x0606', 'anthonymartial@classicmodelcars.com', '4', '1102', 'Sales Rep');
 
-INSERT INTO `classicmodels`.`employees` (`employeeNumber`, `lastName`, `firstName`, `extension`, `email`, `officeCode`, `reportsTo`, `jobTitle`) VALUES ('1755', 'Gates', 'Bill', 'x0404', 'BillGates@classicmodelcars.com', '4', '1102', 'Sales Rep');
+
+INSERT INTO `classicmodels`.`employees` (`employeeNumber`, `lastName`, `firstName`, `extension`, `email`, `officeCode`, `reportsTo`, `jobTitle`) VALUES ('1761', 'Rashford', 'Marcus', 'x1010', 'marcusrashford@classicmodelcars.com', '4', '1102', 'Sales Rep');
+
 
 ```
 - Insert 1 new product
 ```mysql
-INSERT INTO `classicmodels`.`products` (`productCode`, `productName`, `productLine`, `productScale`, `productVendor`, `productDescription`, `quantityInStock`, `buyPrice`, `MSRP`) VALUES ('S72_3213', 'R.M.S. TITANIC', 'Ships', '1:50', 'Blue Star Line', 'A official 1:50 replica of the famous Titanic ', '200', '365.95', '499.99');
+INSERT INTO `classicmodels`.`products` (`productCode`, `productName`, `productLine`, `productScale`, `productVendor`, `productDescription`, `quantityInStock`, `buyPrice`, `MSRP`) VALUES ('S72_3215', 'Aston Martin DB5', 'Classic Cars', '1:25', 'EON', 'An official 1:25 model of the car that James Bond drives in classics such as Goldfinger and Skyfall!', '10000', '25.76', '79.99');
 ```
 
 - Create 1 new order
 ```mysql
-INSERT INTO `classicmodels`.`orders` (`orderNumber`, `orderDate`, `requiredDate`, `status`, `customerNumber`) VALUES ('10426', '2019-02-23', '2019-01-03', 'In Process', '119');
+INSERT INTO `classicmodels`.`orders` (`orderNumber`, `orderDate`, `requiredDate`, `status`, `customerNumber`) VALUES ('10427', '2019-02-23', '2019-01-03', 'In Process', '119');
 ```
 
 **Non-mandatory extra**: Set up a mysql database on digital ocean with standard port (3306), and check the log some days later for log-in attempts.
@@ -163,7 +165,6 @@ Upload as part of the hand-in the database log which shows:
   ```mysql
   INSERT INTO `classicmodels`.`products` (`productCode`, `productName`, `productLine`, `productScale`, `productVendor`, `productDescription`, `quantityInStock`, `buyPrice`, `MSRP`) VALUES ('S72_3214', 'R.M.S. TITANIC 2', 'Ships', '1:25', 'Blue Star Line', 'A official 1:25 replica of the upcoming recreation of the famous RMS Titanic ', '500', '185.98', '299.99');
   ```
-  
   Which failed!
 
 ### Assignment 3
@@ -279,3 +280,6 @@ https://dev.mysql.com/doc/refman/5.7/en/query-log.html
 
 Drop User:
 https://dev.mysql.com/doc/refman/5.6/en/drop-user.html
+
+Command to copy .log-file from Vagrant to Host-machine:
+`vagrant ssh -c "sudo cat /home/vagrant/mysql_databasefiles/58f11bcc4f48.log" > 58f11bcc4f48.log`
