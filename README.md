@@ -131,8 +131,21 @@ Hand in for this is a sql script which creates and sets the permissions for the 
 Make a number of operations on the database:
 
 - Insert 2 new employees
+```mysql
+INSERT INTO `classicmodels`.`employees` (`employeeNumber`, `lastName`, `firstName`, `extension`, `email`, `officeCode`, `reportsTo`, `jobTitle`) VALUES ('1750', 'Jobs', 'Steve', 'x0202', 'stevejobs@classicmodelcars.com', '4', '1102', 'Sales Rep');
+
+INSERT INTO `classicmodels`.`employees` (`employeeNumber`, `lastName`, `firstName`, `extension`, `email`, `officeCode`, `reportsTo`, `jobTitle`) VALUES ('1755', 'Gates', 'Bill', 'x0404', 'BillGates@classicmodelcars.com', '4', '1102', 'Sales Rep');
+
+```
 - Insert 1 new product
+```mysql
+INSERT INTO `classicmodels`.`products` (`productCode`, `productName`, `productLine`, `productScale`, `productVendor`, `productDescription`, `quantityInStock`, `buyPrice`, `MSRP`) VALUES ('S72_3213', 'R.M.S. TITANIC', 'Ships', '1:50', 'Blue Star Line', 'A official 1:50 replica of the famous Titanic ', '200', '365.95', '499.99');
+```
+
 - Create 1 new order
+```mysql
+INSERT INTO `classicmodels`.`orders` (`orderNumber`, `orderDate`, `requiredDate`, `status`, `customerNumber`) VALUES ('10426', '2019-02-23', '2019-01-03', 'In Process', '119');
+```
 
 **Non-mandatory extra**: Set up a mysql database on digital ocean with standard port (3306), and check the log some days later for log-in attempts.
 
