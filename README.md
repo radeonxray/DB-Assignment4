@@ -166,6 +166,9 @@ Upload as part of the hand-in the database log which shows:
   INSERT INTO `classicmodels`.`products` (`productCode`, `productName`, `productLine`, `productScale`, `productVendor`, `productDescription`, `quantityInStock`, `buyPrice`, `MSRP`) VALUES ('S72_3214', 'R.M.S. TITANIC 2', 'Ships', '1:25', 'Blue Star Line', 'A official 1:25 replica of the upcoming recreation of the famous RMS Titanic ', '500', '185.98', '299.99');
   ```
   Which failed!
+  
+[The Full log-file can be read here](https://github.com/radeonxray/DB-Assignment4/blob/master/mysqllog.log)
+**Please Note:** I don't I had turned on the log properly, so I had to drop all the user, re-recreate them, re-assign their privileges, add new content (2 new employees, 1 order, 1 product, as well as trying to add content with a user that does not have the permission)
 
 ### Assignment 3
 
