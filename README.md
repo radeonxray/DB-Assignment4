@@ -286,4 +286,4 @@ Drop User:
 https://dev.mysql.com/doc/refman/5.6/en/drop-user.html
 
 Command to copy .log-file from Vagrant to Host-machine:
-`vagrant ssh -c "sudo cat /home/vagrant/mysql_databasefiles/58f11bcc4f48.log" > 58f11bcc4f48.log`
+`vagrant ssh -c "sudo cat /home/vagrant/mysql_databasefiles/58f11bcc4f48.log" > mysqllog.log`
