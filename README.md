@@ -18,13 +18,15 @@ Slides for the assignment: https://github.com/datsoftlyngby/soft2019spring-datab
   - Needs access to the orders-, orderdetails- and payments-table. Reasoning is that the bookkeepers needs to check that the orders and orderdetails match, as well as the payments-table, to make sure that the orders has been paied for.
   - The bookkeepers perhaps should only be equiped with SELECT, since they have to control/check actual orders, maybe potentially DELETE and UPDATE.
   - An argument could be made for allowing UPDATE, as the Bookkeepers perhaps should be able to correct mistakes, but in order to limit potential "creative booking", they should not be allowed to DELETE from any of the tables.
+  - The Bookkeepers should perhaps also be granted atleast SELECT to the customers, in order to get some consistency with the orderdetails and payments.
 - Human resources which takes care of employees and their offices
   - Needs access to employees- and offices-table. HR are not concerned about the product or orders, they only focus on the "human"-aspect of the databse.
-  - It could be argued, that HR only needs to INSERT, DELETE, SELECT, CREATE and UPDATE.
-  - Does NOT CREATE new Users! That's IT job!
+  - It could be argued, that HR only needs to INSERT, DELETE, SELECT and UPDATE.
+  - Does NOT CREATE new Users (Employees)! That's IT job!
 - Sales - who creates the orders for the customers
-  - Needs access to the Orders-, OrderDetails-, Products- and Productlines-tables, so they can actually sell the products, as well as create orders and change the status of the inventory (Shouldn't be able to sell more than you have!)
-  - One could argue, that the sales team only should be able to SELECT, UPDATE, DELETE and INSERT(orders & orderdetails, NOT Products or productlines!), thus only making them able to create a sale, and not any other features.
+  - Needs access to the Orders-, OrderDetails-, Customers- and Products-tables, so they can actually sell the products, as well as create orders and change the status of the inventory (Shouldn't be able to sell more than you have!)
+  - One could argue, that the sales team only should be able to SELECT, UPDATE, DELETE and INSERT(orders & orderdetails, NOT Products), thus only making them able to create a sale, and not any other features.
+  -Also needs to be able to INSERT and UPDATE new Customers, to link to orders, sales etc.
 
 - IT - who maintains this database
   - Root access, since the user needs to be able to create new schemas, change existing ones and perhaps even delete existing ones. Gratned, the only catch here it, that the user might not have anything to do with actual content, but only the framework containing the content.
@@ -33,14 +35,58 @@ Create a database user for each of the four roles, and be restrictive in what th
 
 In the readme file, argue why the permissions are as they are.
 
-`SQL Scripts:`
+#### SQL Scripts
 
-Create Users
+**Create Users**
 ```mysql
 CREATE USER 'userInventory'@'localhost' IDENTIFIED BY 'passInven';
 CREATE USER 'userBookkeeping'@'localhost' IDENTIFIED BY 'passBkp';
 CREATE USER 'userHR'@'localhost' IDENTIFIED BY 'passHR';
 CREATE USER 'userSale'@'localhost' IDENTIFIED BY 'passSale';
+```
+
+**Note** After setting each user priviligies, remember to:
+```mysql 
+flush Privileges;
+```
+This operation **CANNOT** be performed in the same query as the GRANT
+
+**Set userInventory priviligies**
+```mysql 
+GRANT SELECT, INSERT, UPDATE, DELETE ON classicmodels.products TO userInventory@localhost;
+GRANT SELECT, INSERT, UPDATE, DELETE ON classicmodels.productlines TO userInventory@localhost;
+```
+
+**Set userBookkeeping priviligies**
+```mysql 
+GRANT SELECT, UPDATE  ON classicmodels.orderdetails TO userBookkeeping@localhost;
+GRANT SELECT, UPDATE  ON classicmodels.orders TO userBookkeeping@localhost;
+GRANT SELECT, UPDATE  ON classicmodels.payments TO userBookkeeping@localhost;
+GRANT SELECT  ON classicmodels.customers TO userBookkeeping@localhost;
+```
+
+**Set userHR priviligies**
+```mysql 
+GRANT SELECT, UPDATE, INSERT, DELETE ON classicmodels.employees TO userHR@localhost;
+GRANT SELECT, UPDATE, INSERT, DELETE ON classicmodels.offices TO userHR@localhost;
+```
+
+
+**Set userSale priviligies**
+```mysql 
+GRANT SELECT, INSERT, UPDATE, DELETE ON classicmodels.customers TO userSale@localhost;
+GRANT SELECT, INSERT, UPDATE, DELETE ON classicmodels.orderdetails TO userSale@localhost;
+GRANT SELECT, INSERT, UPDATE, DELETE ON classicmodels.orders TO userSale@localhost;
+GRANT SELECT, UPDATE ON classicmodels.products TO userSale@localhost;
+
+```
+
+**Show User Grant**
+```mysql 
+SHOW GRANTS FOR userInventory@localhost;
+SHOW GRANTS FOR userBookkeeping@localhost;
+SHOW GRANTS FOR userHR@localhost;
+SHOW GRANTS FOR userSale@localhost;
 ```
 
 **DO NOT USE** Set Very basic (ALL)  PRIVILEGES **DO NOT USE** 
