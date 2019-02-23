@@ -168,7 +168,8 @@ Upload as part of the hand-in the database log which shows:
   Which failed!
   
 [The Full log-file can be read here](https://github.com/radeonxray/DB-Assignment4/blob/master/mysqllog.log)
-**Please Note:** I don't I had turned on the log properly, so I had to drop all the user, re-recreate them, re-assign their privileges, add new content (2 new employees, 1 order, 1 product, as well as trying to add content with a user that does not have the permission)
+
+**Please Note:** I don't think I had turned on the log properly, so I had to drop all the user, re-recreate them, re-assign their privileges, add new content (2 new employees, 1 order, 1 product, as well as trying to add content with a user that does not have the permission), hence why the first couple of logged items seemes a bit odd.
 
 ### Assignment 3
 
